@@ -1,13 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat Alternates", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --form: #989fa5;
+  --header: #083645;
+  --primarycolor: #0b2035;
+  --secondarycolor: #ff914d;
+  --color1: #fff;
+  --colorp: #76838f;
+}
+
+/* styling for react landing page */
+.bars {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  width: 100px;
+  min-width: 100px;
+  height: 35px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+  left: 0;
+  right: 0;
+}
+.bars .bar {
+  width: 7px;
+  height: 5px;
+  background-color: #fff;
+  animation: none;
+  animation-name: none;
+}
+.bars .bar:nth-of-type(even) {
+  margin: 0 2px;
+  background-color: #d4b94b;
+}
+.bars .bar.one {
+  animation-delay: 250ms;
+}
+.bars .bar.two {
+  animation-delay: 715ms;
+}
+.bars .bar.three {
+  animation-delay: 475ms;
+}
+.bars .bar.four {
+  animation-delay: 25ms;
+}
+.bars .bar.five {
+  animation-delay: 190ms;
+}
+.bars.dance .bar {
+  animation-name: dance;
+  animation-duration: 400ms;
+  animation-play-state: running;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dance {
+  from {
+    height: 10px;
+  }
+  to {
+    height: 100%;
+  }
+}
+.test_cover {
+  overflow: hidden;
+  /* background: url(../src/img/hands-folded-prayer.jpg); */
+  background-position: center;
+  background-size: cover;
+}
+.test_cover img {
+  animation: moveImage 1.5s ease-in-out;
+}
+@keyframes moveImage {
+  from {
+    transform: scale(0.4);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.HamburgerIcon {
+  position: fixed;
+  /* bottom : 18%; */
+  right: 10%;
+  z-index: 8;
+  border-radius: 50%;
+}
+.menu_items_cover {
+  position: fixed;
+  width: 100%;
+  clip-path: circle(100px at 90% -10%);
+  -webkit-clip-path: circle(25px at 87% 8%);
+  transition: 1.5s ease-in-out;
+  pointer-events: none;
+  z-index: 1;
+}
+.menu_items_cover.open {
+  clip-path: circle(10px at 90% -10%);
+  -webkit-clip-path: circle(1400px at 90% -10%);
+  pointer-events: all;
+  background-color: #ff914d;
+  z-index: 4;
+}
+
+/*checkboxes*/
+
+ul.ks-cboxtags {
+  list-style: none;
+  padding: 20px;
+}
+ul.ks-cboxtags li {
+  display: inline;
+}
+ul.ks-cboxtags li label {
+  display: inline-block;
+  background-color: var(--header);
+  border: 2px solid rgba(139, 139, 139, 0.3);
+  color: #adadad;
+  border-radius: 25px;
+  white-space: nowrap;
+  margin: 3px 0px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s;
+}
+
+ul.ks-cboxtags li label {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 12px;
+  padding: 2px 6px 2px 2px;
+  content: "\f067";
+  transition: transform 0.3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+  content: "\f00c";
+  transform: rotate(-360deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+  border: 2px solid var(--header);
+  background-color: var(--secondarycolor);
+  color: #fff;
+  transition: all 0.2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+  opacity: 0;
+}
+ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+  border: 2px solid var(--primarycolor);
+}
+/* End styling for react landing page */
+
+@media (max-width: 768px) {
+  .desktop_home {
+    display: none;
+  }
+  .social_link {
+    box-shadow: 0px 3px 10px rgba(211, 177, 24, 0.2);
+    border: 1px solid rgb(194, 192, 192);
+    border-radius: 10px;
+  }
+}
+
+/* Tab content - closed */
+.tab-content {
+  max-height: 0;
+  -webkit-transition: max-height 0.35s;
+  -o-transition: max-height 0.35s;
+  transition: max-height 0.35s;
+}
+/* :checked - resize to full height */
+.tab input:checked ~ .tab-content {
+  max-height: 100vh;
+}
+/* Label formatting when open */
+.tab input:checked + label {
+  /*@apply text-xl p-5 border-l-2 border-indigo-500 bg-gray-100 text-indigo*/
+  font-size: 1.1rem; /*.text-xl*/
+  padding: 1.25rem; /*.p-5*/
+  border-left-width: 2px; /*.border-l-2*/
+  border-color: #101920; /*.border-indigo*/
+  background-color: #101920; /*.bg-gray-100 */
+  color: #fff; /*.text-indigo*/
+}
+/* Icon */
+.tab label::after {
+  float: right;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  text-align: center;
+  -webkit-transition: all 0.35s;
+  -o-transition: all 0.35s;
+  transition: all 0.35s;
+  background-color: var(--header);
+}
+/* Icon formatting - closed */
+.tab input[type="checkbox"] + label::after {
+  content: "+";
+  font-weight: bold; /*.font-bold*/
+  border-width: 1px; /*.border*/
+  border-radius: 9999px; /*.rounded-full */
+  border-color: #c9e2fa; /*.border-grey*/
+}
+.tab input[type="radio"] + label::after {
+  content: "\25BE";
+  font-weight: bold; /*.font-bold*/
+  border-width: 1px; /*.border*/
+  border-radius: 9999px; /*.rounded-full */
+  border-color: #b8c2cc; /*.border-grey*/
+}
+/* Icon formatting - open */
+.tab input[type="checkbox"]:checked + label::after {
+  transform: rotate(315deg);
+  background-color: #ff914d; /*.bg-indigo*/
+  color: #f8fafc; /*.text-grey-lightest*/
+}
+.tab input[type="radio"]:checked + label::after {
+  transform: rotateX(180deg);
+  background-color: #ffbe00; /*.bg-indigo*/
+  color: #f8fafc; /*.text-grey-lightest*/
 }
