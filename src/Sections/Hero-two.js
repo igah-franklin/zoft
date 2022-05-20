@@ -3,7 +3,7 @@ const HeroTwo = () => {
     <>
       <div className="flex flex-col items-center  w-[90vw]">
         <div className="border-2 border-header w-full p-[50px] text-center">
-          <h1 className="text-[80px]">
+          <h1 className="text-[80px] animate-bounce">
             <span className="text-white">
               zo<span className="text-secondaryAlternative">ft</span>
             </span>
